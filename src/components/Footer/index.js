@@ -2,17 +2,18 @@ import styled from 'styled-components'
 
 // src/components/Footer/index.js
 const FooterWrapper = styled.footer`
-  background-color: #00000070;
+  background-color: rgba(0, 118, 242, 0.3);
   padding: 20px;
   display: flex;
   align-items: center;
   border-radius: 4px; 
+  color: ${({ theme }) => theme.colors.gray};
   img {
     width: 58px;
     margin-right: 23px;
   }
   a {
-    color: white;
+    color: ${({ theme }) => theme.colors.gray};
     text-decoration: none;
     transition: .3s;
     &:hover,

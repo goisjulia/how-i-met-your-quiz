@@ -1,7 +1,7 @@
 {
-    "bg": "https://i.ibb.co/bb7s2BG/home-gois-julia-Documents-Treinamentos-Projetos-yellow-umbrella-quiz-src-assets-img-3.png",
-    "title": "Quiz How I Met Your Mother",
-    "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
+    "bg": "https://i.ibb.co/xFBPyCg/Yellow-Umbrella-Contrasting-With-Black-Umbrellas-Being-Different-Concept.jpg",
+    "title": "Esse quiz vai ser legen... Espera um pouquinho...",
+    "description": "...dário! Legendário!",
     "questions": [
         {
             "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
@@ -31,10 +31,11 @@
     ],
     "theme": {
         "colors": {
-            "primary": "#CC9C00",
-            "secondary": "#806200",
-            "mainBg": "#806B26",
-            "contrastText": "beige",
+            "primary": "#FAC32A",
+            "secondary": "#0076f2",
+            "mainBg": "rgba(255,255,255,0.7)",
+            "contrastText": "#1c1b19",
+            "gray": "#dbdbdb",
             "wrong": "#FF0D23",
             "success": "#19FF4F"
         },
