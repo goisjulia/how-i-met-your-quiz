@@ -1,0 +1,43 @@
+{
+    "bg": "https://i.ibb.co/bb7s2BG/home-gois-julia-Documents-Treinamentos-Projetos-yellow-umbrella-quiz-src-assets-img-3.png",
+    "title": "Quiz How I Met Your Mother",
+    "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
+    "questions": [
+        {
+            "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+            "title": "Como fazer um seletor por id via CSS?",
+            "description": "Essa é pra aquecer",
+            "answer": 2,
+            "alternatives": [
+                ".elemento",
+                "*elemento",
+                "#elemento",
+                "%elemento"
+            ]
+        },
+        {
+            "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+            "title": "Como fazer um background gradiente com css?",
+            "description": "Faz tempo em haha",
+            "answer": 0,
+            "alternatives": [
+                "background: linear-gradient(#e66465, #9198e5);",
+                "background: gradient(#e66465, #9198e5);"
+            ]
+        }
+    ],
+    "external": [
+        ""
+    ],
+    "theme": {
+        "colors": {
+            "primary": "#CC9C00",
+            "secondary": "#806200",
+            "mainBg": "#806B26",
+            "contrastText": "beige",
+            "wrong": "#FF0D23",
+            "success": "#19FF4F"
+        },
+        "borderRadius": "4px"
+    }
+}
