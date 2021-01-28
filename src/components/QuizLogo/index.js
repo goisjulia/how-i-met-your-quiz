@@ -1,20 +1,19 @@
-import styled from 'styled-components';
-
 import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
+// import PropTypes from 'prop-types';
 
-function Logo({ className }) {
-    return (
-        <LogoContainer>
-            <img src="https://fontmeme.com/permalink/210127/0b75dba7d920d93144d1a258d3e64bfb.png" alt="Logo" border="0" />
-        </LogoContainer>
-
-    );
+// eslint-disable-next-line no-unused-vars
+function Logo() {
+  return (
+    <LogoContainer>
+      <img src="https://fontmeme.com/permalink/210127/0b75dba7d920d93144d1a258d3e64bfb.png" alt="Logo" border="0" />
+    </LogoContainer>
+  );
 }
 
-Logo.propTypes = {
-    className: PropTypes.string.isRequired,
-};
+// Logo.propTypes = {
+//   className: PropTypes.string.isRequired,
+// };
 
 const QuizLogo = styled(Logo)`
     margin: auto;
@@ -30,6 +29,5 @@ const LogoContainer = styled.div`
     align-items: center;
     justify-content: center;
 `;
-
 
 export default QuizLogo;

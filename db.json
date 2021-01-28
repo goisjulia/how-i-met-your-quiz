@@ -36,6 +36,7 @@
             "mainBg": "rgba(255,255,255,0.7)",
             "contrastText": "#1c1b19",
             "gray": "#dbdbdb",
+            "darkGray": "#999",
             "wrong": "#FF0D23",
             "success": "#19FF4F"
         },
