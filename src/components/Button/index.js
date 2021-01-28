@@ -1,8 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const ButtonSubmit = styled.button`
+const Button = styled.button`
     height: 2.5rem;
     width: 100%;
     padding: 0px 10px;
@@ -27,22 +26,11 @@ const ButtonSubmit = styled.button`
     }
 `;
 
-ButtonSubmit.propTypes = {
-  title: PropTypes.string,
-  type: PropTypes.string,
-  disabled: PropTypes.bool,
-};
-
-ButtonSubmit.defaultProps = {
-  type: 'button',
-  disabled: false,
+Button.propTypes = {
+  // title: PropTypes.string,
+  type: PropTypes.oneOf(['submit', 'button']).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 // eslint-disable-next-line react/prop-types
-export default function Button({ title, type, disabled }) {
-  return (
-    <ButtonSubmit type={type} disabled={disabled} >
-      {title}
-    </ButtonSubmit>
-  );
-}
+export default Button;

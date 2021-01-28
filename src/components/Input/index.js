@@ -22,14 +22,26 @@ const InputDefault = styled.input`
     }
 `;
 
-InputDefault.propTypes = {
-  placeholder: PropTypes.string,
-  onChange: PropTypes.func,
-};
-
-// eslint-disable-next-line react/prop-types
-export default function Input({ onChange, placeholder }) {
+export default function Input({ onChange, placeholder, ...props }) {
   return (
-    <InputDefault placeholder={placeholder} onChange={onChange} />
+    <>
+      <InputDefault
+        placeholder={placeholder}
+        onChange={onChange}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
+      />
+    </>
   );
 }
+
+Input.defaultProps = {
+  value: '',
+};
+
+Input.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+};
