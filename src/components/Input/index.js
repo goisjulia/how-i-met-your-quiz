@@ -18,7 +18,6 @@ const InputDefault = styled.input`
     &:focus, &:hover {
         box-shadow: none;
         border: 2px solid;
-        /* box-shadow: 0px 0px 2px 2px ${({ theme }) => theme.colors.gray}; */
     }
 `;
 
@@ -36,12 +35,13 @@ export default function Input({ onChange, placeholder, ...props }) {
 }
 
 Input.defaultProps = {
+  placeholder: '',
   value: '',
 };
 
 Input.propTypes = {
   onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
 };

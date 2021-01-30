@@ -4,25 +4,123 @@
     "description": "...dário! Legendário!",
     "questions": [
         {
-            "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-            "title": "Como fazer um seletor por id via CSS?",
-            "description": "Essa é pra aquecer",
+            "image": "https://professordodi.files.wordpress.com/2016/04/challenge-accepted-gif-barney-11.gif?w=676",
+            "title": "Quantas temporadas a série tem?",
+            "description": "Desafio aceito!",
             "answer": 2,
             "alternatives": [
-                ".elemento",
-                "*elemento",
-                "#elemento",
-                "%elemento"
+                "7",
+                "8",
+                "9",
+                "10"
             ]
         },
         {
-            "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-            "title": "Como fazer um background gradiente com css?",
-            "description": "Faz tempo em haha",
+            "image": "https://media.giphy.com/media/Th7fKfOVQoLok/source.gif",
+            "title": "Qual o nome completo do Ted?",
+            "description": "Você conhece o Ted?",
+            "answer": 3,
+            "alternatives": [
+                "Ted Ellen Mosby",
+                "Ted Evelyn Mosby",
+                "Theodore Ellen Mosby",
+                "Theodore Evelyn Mosby"
+            ]
+        },
+        {
+            "image": "https://i.gifer.com/KjVH.gif",
+            "title": "Qual era o desenho e em que local Ted fez uma tatuagem?",
+            "description": "O seu problema é que você pensa demais, talvez devesse beber mais, ele disse...",
+            "answer": 1,
+            "alternatives": [
+                "Mariposa nas costas",
+                "Borboleta no cóccix",
+                "Tribal no cóccix",
+                "Unicórnio nas costas"
+            ]
+        },
+        {
+            "image": "https://thumbs.gfycat.com/AshamedUnhappyAustraliansilkyterrier-small.gif",
+            "title": "Qual era o nome artístico da Robin quando era uma pop star adolescente?",
+            "description": "Let's go to the mall!",
+            "answer": 2,
+            "alternatives": [
+                "Robin Stars",
+                "Robin Glitter",
+                "Robin Sparkles",
+                "Robin Firework"
+            ]
+        },
+        {
+            "image": "https://i.ibb.co/TkCM436/55ed7e5e-bd23-4a88-b842-7057084caa5f.gif",
+            "title": "Qual o nome do jogo favorito do Barney?",
+            "description": "Não banque o herói, Scherbatsky. (2x14)",
             "answer": 0,
             "alternatives": [
-                "background: linear-gradient(#e66465, #9198e5);",
-                "background: gradient(#e66465, #9198e5);"
+                "Laser Tag",
+                "Lag Taser",
+                "Taser Lag",
+                "Tag Laser"
+            ]
+        },
+        {
+            "image": "https://64.media.tumblr.com/adfed1935483f0565060e19fd0c3d74c/05d7348f5443c2ba-fc/s500x750/89ec30aabf4305dbdf0fc087e84611e5d8392a96.gifv",
+            "title": "Qual o carro que o Marshall ganhou dos irmãos?",
+            "description": "And I would walk 500 more",
+            "answer": 3,
+            "alternatives": [
+                "Oldsmobile",
+                "DeLorean DMC-12",
+                "Pontiac Firebird",
+                "Pontiac Fiero"
+            ]
+        },
+        {
+            "image": "https://data.whicdn.com/images/175359323/original.gif",
+            "title": "Quando a Lily cancelou o casamento, para qual cidade foi para fazer o curso de artes?",
+            "description": "Às vezes, mesmo quando você sabe que algo é um erro, você comete do mesmo jeito.",
+            "answer": 1,
+            "alternatives": [
+                "Los Angeles",
+                "São Francisco",
+                "Chicago",
+                "Nova Iorque"
+            ]
+        },
+        {
+            "image": "https://poltronanerd.com.br/wp-content/uploads/2017/03/kids-How-i-Met.gif",
+            "title": "Quais os nomes dos filhos do Ted?",
+            "description": "Crianças, vou lhes contar uma história incrível, a história sobre como eu conheci sua mãe!",
+            "answer": 0,
+            "alternatives": [
+                "Luke e Penny Mosby",
+                "Luke e Leia Mosby",
+                "Marvin e Daisy Mosby",
+                "Marvin e Penny Mosby"
+            ]
+        },
+        {
+            "image": "https://i.gifer.com/D5CD.gif",
+            "title": "Qual palavra causa agonia na Lily?",
+            "description": "Feelings. Inside. Oh no!",
+            "answer": 0,
+            "alternatives": [
+                "Hidratar",
+                "Hidrante",
+                "Habitar",
+                "Habituar"
+            ]
+        },
+        {
+            "image": "https://vodzilla.co/wp-content/uploads/2015/12/HIMYM-5..gif",
+            "title": "Qual o nome do filme que o marido da Stella fez sobre o \"Jed Mosley \"?",
+            "description": "Não vai dar amada querida.",
+            "answer": 2,
+            "alternatives": [
+                "The Wedding Bridesmaid",
+                "The Wedding Fiance",
+                "The Wedding Bride",
+                "The Wedding Best Man"
             ]
         }
     ],
@@ -33,7 +131,7 @@
         "colors": {
             "primary": "#FAC32A",
             "secondary": "#0076f2",
-            "mainBg": "rgba(255,255,255,0.7)",
+            "mainBg": "#ffffff",
             "contrastText": "#1c1b19",
             "gray": "#dbdbdb",
             "darkGray": "#999",

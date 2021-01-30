@@ -6,7 +6,7 @@ const Button = styled.button`
     width: 100%;
     padding: 0px 10px;
     border: none;
-    margin: 10px 0;
+    margin: 20px 0;
     border-radius: 2px;
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.contrastText};
@@ -24,11 +24,16 @@ const Button = styled.button`
         box-shadow: none;
         border: 2px solid;
     }
+
+    &:hover &:disabled{
+      background-color: ${({ theme }) => `${theme.colors.primary}70`};
+      color: ${({ theme }) => `${theme.colors.contrastText}70`};
+    }
 `;
 
 Button.propTypes = {
   // title: PropTypes.string,
-  type: PropTypes.oneOf(['submit', 'button']).isRequired,
+  type: PropTypes.oneOf(['submit', 'button', 'reset']).isRequired,
   children: PropTypes.node.isRequired,
 };
 

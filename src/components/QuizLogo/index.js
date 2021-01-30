@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // eslint-disable-next-line no-unused-vars
 function Logo() {
   return (
-    <LogoContainer>
+    <LogoContainer href="/">
       <img src="https://fontmeme.com/permalink/210127/0b75dba7d920d93144d1a258d3e64bfb.png" alt="Logo" border="0" />
     </LogoContainer>
   );
@@ -24,7 +24,7 @@ const QuizLogo = styled(Logo)`
   }
 `;
 
-const LogoContainer = styled.div`
+const LogoContainer = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
