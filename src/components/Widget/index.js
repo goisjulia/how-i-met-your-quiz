@@ -57,19 +57,32 @@ Widget.Topic = styled.a`
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: .3s;
   display: block;
+
+  button {
+    display: none;
+  }
   
-  &:hover,
-  &:focus {
-    color:  ${({ theme }) => `${theme.colors.mainBg}`};
-    background-color: ${({ theme }) => theme.colors.secondary};
-    opacity: .7;
+  &[data-submitted="false"]:hover {
+    background-color: ${({ theme }) => `${theme.colors.primary}bb`};
   }
 
-  &[data-selected="true"]{
-    background-color: ${({ theme }) => `${theme.colors.secondary}`};
-    color:  ${({ theme }) => `${theme.colors.mainBg}`};
-    &:hover {
-      opacity: 1;
+  &[data-submitted="true"] {
+    background-color: ${({ theme }) => `${theme.colors.primary}30`};
+    cursor: not-allowed;
+
+    &[data-selected="true"]{
+      background-color: ${({ theme }) => `${theme.colors.secondary}`};
+      color:  ${({ theme }) => `${theme.colors.mainBg}`};
+      cursor: auto;
+
+      &[data-correct="true"]{
+        background-color: ${({ theme }) => `${theme.colors.success}`};
+        color:  ${({ theme }) => `${theme.colors.contrastText}`};
+      }
+
+      &[data-correct="false"]{
+        background-color: ${({ theme }) => `${theme.colors.wrong}`};
+      }
     }
   }
 `;

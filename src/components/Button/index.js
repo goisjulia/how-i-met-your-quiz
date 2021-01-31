@@ -32,10 +32,8 @@ const Button = styled.button`
 `;
 
 Button.propTypes = {
-  // title: PropTypes.string,
   type: PropTypes.oneOf(['submit', 'button', 'reset']).isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
-// eslint-disable-next-line react/prop-types
 export default Button;

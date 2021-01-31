@@ -14,12 +14,6 @@ export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
 
-  // function changeValue() {
-  //   return function retorno(e) {
-  //     setName(e.target.value);
-  //   };
-  // }
-
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -39,7 +33,7 @@ export default function Home() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Digite seu nome 😉"
                 value={name}
-
+                autoComplete="off"
               />
               <Button title="" type="submit" disabled={name.length === 0}>
                 {db.description}

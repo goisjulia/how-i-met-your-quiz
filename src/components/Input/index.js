@@ -35,12 +35,13 @@ export default function Input({ onChange, placeholder, ...props }) {
 }
 
 Input.defaultProps = {
+  onChange() {},
   placeholder: '',
   value: '',
 };
 
 Input.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
