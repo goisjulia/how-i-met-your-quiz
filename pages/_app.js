@@ -18,6 +18,22 @@ body {
 html, body {
   min-height: 100vh;
 }
+
+body::-webkit-scrollbar-track{
+  border-radius: 5px;
+  background-color: ${({ theme }) => theme.colors.contrastText};
+}
+
+body::-webkit-scrollbar{
+  width: 10px;
+  background-color: ${({ theme }) => theme.colors.contrastText};
+}
+
+body::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: ${({ theme }) => `${theme.colors.primary}aa`};
+}
+
 #__next {
   flex: 1;
   display: flex;

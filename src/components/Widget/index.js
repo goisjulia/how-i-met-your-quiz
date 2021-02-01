@@ -4,7 +4,7 @@ const Widget = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
   border: 1px solid ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => `${theme.colors.mainBg}aa`};
+  background-color: ${({ theme }) => `${theme.colors.mainBg}`};
   border-radius: 4px;
   overflow: hidden;
   h1, h2, h3 {
@@ -26,6 +26,11 @@ Widget.Header = styled.header`
   align-items: center;
   padding: 18px 32px;
   background-color: ${({ theme }) => theme.colors.primary};
+  text-transform: uppercase;
+
+  h1 {
+    font-size:12pt;
+  }
   
   * {
     margin: 0;
@@ -34,6 +39,13 @@ Widget.Header = styled.header`
 
 Widget.Content = styled.div`
   padding: 24px 32px 32px 32px;
+
+  h1 {
+    font-size: 12pt;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+  }
+
   & > *:first-child {
     margin-top: 0;
   }
@@ -50,7 +62,7 @@ Widget.Topic = styled.a`
   outline: 0;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.contrastText};
-  background-color: ${({ theme }) => `${theme.colors.primary}70`};
+  background-color: ${({ theme }) => `${theme.colors.primary}90`};
   padding: 10px 15px;
   margin-bottom: 8px;
   cursor: pointer;
@@ -61,16 +73,18 @@ Widget.Topic = styled.a`
   font-family: Lato, sans-serif;
   min-height: 2.5rem;
   width: 100%;
+  /* border: 1px solid ${({ theme }) => theme.colors.contrastText}; */
   border: none;
   font-size: 12pt;
 
   &:not([data-submitted]):hover ,
   &[data-submitted="false"]:hover {
-    background-color: ${({ theme }) => `${theme.colors.primary}bb`};
+    background-color: ${({ theme }) => `${theme.colors.primary}70`};
+    transform: scale(1.05);
   }
 
   &[data-submitted="true"] {
-    background-color: ${({ theme }) => `${theme.colors.primary}30`};
+    background-color: ${({ theme }) => `${theme.colors.primary}50`};
     cursor: not-allowed;
 
     &[data-selected="true"]{

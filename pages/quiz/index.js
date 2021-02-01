@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import db from '../../db.json';
 import Widget from '../../src/components/Widget';
 import QuizLogo from '../../src/components/QuizLogo';
@@ -125,7 +126,10 @@ function QuestionWidget({
 
             return (
               <Widget.Topic
-                as="button"
+                as={motion.button}
+                whileTap={{
+                  scale: 0.95,
+                }}
                 id={alternativeId}
                 key={alternativeId}
                 onClick={() => setSelectedAlternative(alternativeIndex)}

@@ -125,14 +125,15 @@
         }
     ],
     "external": [
-        "https://aluraquiz-css.omariosouto.vercel.app/",
-        "https://aluraquiz-devsoutinho.omariosouto.vercel.app/"
+        "https://projeto-alura-quiz.andersonfroes.vercel.app/",
+        "https://aluraquiz-react-nextjs.ronaldo-oliveira99.vercel.app/",
+        "https://aluraquiz-base.lucascardev.vercel.app/"
     ],
     "theme": {
         "colors": {
             "primary": "#FAC32A",
             "secondary": "#0076f2",
-            "mainBg": "#ffffff",
+            "mainBg": "#b5b5b5",
             "contrastText": "#1c1b19",
             "gray": "#dbdbdb",
             "darkGray": "#999",

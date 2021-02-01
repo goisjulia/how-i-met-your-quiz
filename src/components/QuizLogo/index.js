@@ -22,20 +22,19 @@ function Logo() {
 //   className: PropTypes.string.isRequired,
 // };
 
-const QuizLogo = styled(Logo)`
+// const QuizLogo = styled(Logo)`
+// `;
+
+const LogoContainer = styled.div`
   margin: auto;
-  display: block;
 
   @media screen and (max-width: 500px) {
     margin: 0;
   }
-`;
-
-const LogoContainer = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 `;
 
-export default QuizLogo;
+export default Logo;
