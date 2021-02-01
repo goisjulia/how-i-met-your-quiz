@@ -55,13 +55,16 @@ Widget.Topic = styled.a`
   margin-bottom: 8px;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius};
-  transition: .3s;
   display: block;
 
-  button {
-    display: none;
-  }
-  
+  text-align: left;
+  font-family: Lato, sans-serif;
+  min-height: 2.5rem;
+  width: 100%;
+  border: none;
+  font-size: 12pt;
+
+  &:not([data-submitted]):hover ,
   &[data-submitted="false"]:hover {
     background-color: ${({ theme }) => `${theme.colors.primary}bb`};
   }

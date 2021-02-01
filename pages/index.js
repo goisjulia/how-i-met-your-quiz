@@ -9,6 +9,7 @@ import GitHubCorner from '../src/components/GitHubCorner';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 import QuizContainer from '../src/components/QuizContainer';
+import Link from '../src/components/Link';
 
 export default function Home() {
   const router = useRouter();
@@ -45,8 +46,29 @@ export default function Home() {
         <Widget>
           <Widget.Content>
             <h1>Quizes da Galera</h1>
+            <ul>
+              {db.external.map((linkExterno) => {
+                const [projectName, gitHubUser] = linkExterno
+                  .replace(/\//g, '')
+                  .replace('https:', '')
+                  .replace('.vercel.app', '')
+                  .split('.');
 
-            <p>Em construção! 🚧</p>
+                return (
+                  <li key={linkExterno}>
+                    <Widget.Topic
+                      as={Link}
+                      href={`quiz/${projectName}___${gitHubUser}`}
+                    >
+                      {gitHubUser}
+                      {' -> '}
+                      {projectName}
+                    </Widget.Topic>
+                  </li>
+                );
+              })}
+
+            </ul>
           </Widget.Content>
         </Widget>
         <Footer />
