@@ -10,7 +10,7 @@ const QuizStatusContainer = styled.div`
   justify-content: flex-start;
   padding: 10px 5px;
   width: 100%;
-  margin: auto;
+  margin-left: 7px;
   /* margin-top: 40px; */
   /* border-radius: ${({ theme }) => `${theme.borderRadius}`}; */
 `;
