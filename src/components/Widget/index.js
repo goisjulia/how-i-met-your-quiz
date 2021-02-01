@@ -79,8 +79,9 @@ Widget.Topic = styled.a`
 
   &:not([data-submitted]):hover ,
   &[data-submitted="false"]:hover {
-    background-color: ${({ theme }) => `${theme.colors.primary}70`};
-    transform: scale(1.05);
+    background-color: ${({ theme }) => `${theme.colors.primary}bb`};
+    transform: scale(1.01);
+    font-weight: 700;
   }
 
   &[data-submitted="true"] {
@@ -88,19 +89,31 @@ Widget.Topic = styled.a`
     cursor: not-allowed;
 
     &[data-selected="true"]{
-      background-color: ${({ theme }) => `${theme.colors.secondary}`};
-      color:  ${({ theme }) => `${theme.colors.mainBg}`};
+      color:  ${({ theme }) => `${theme.colors.white}`};
       cursor: auto;
+      font-weight: 700;
 
       &[data-correct="true"]{
         background-color: ${({ theme }) => `${theme.colors.success}`};
-        color:  ${({ theme }) => `${theme.colors.contrastText}`};
+        /* color:  ${({ theme }) => `${theme.colors.contrastText}`}; */
+        animation: changeColorSucess 0.7s linear;
       }
 
       &[data-correct="false"]{
         background-color: ${({ theme }) => `${theme.colors.wrong}`};
+        animation: changeColorError 0.7s linear;
       }
     }
+  }
+
+  @keyframes changeColorSucess {
+    from { background-color: ${({ theme }) => `${theme.colors.primary}70`}; }
+    to { background-color: ${({ theme }) => `${theme.colors.success}`}; }
+  }
+
+  @keyframes changeColorError {
+    from { background-color: ${({ theme }) => `${theme.colors.primary}70`}; }
+    to { background-color: ${({ theme }) => `${theme.colors.wrong}`}; }
   }
 `;
 

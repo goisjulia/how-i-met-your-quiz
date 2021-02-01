@@ -9,6 +9,7 @@ import QuizBackground from '../../src/components/QuizBackground';
 import QuizContainer from '../../src/components/QuizContainer';
 import Button from '../../src/components/Button';
 import Spinner from '../../src/components/Loading';
+import QuizStatus from '../../src/components/QuizStatusBar';
 
 function LoadingWidget() {
   return (
@@ -71,9 +72,9 @@ function ResultWidget({ results }) {
 function QuestionWidget({
   question,
   questionIndex,
-  totalQuestions,
   onSubmit,
   addResult,
+  results,
 }) {
   // const questionId = `question__${questionIndex}`;
   const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
@@ -94,10 +95,8 @@ function QuestionWidget({
 
   return (
     <Widget>
-      <Widget.Header>
-        <h3>
-          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
-        </h3>
+      <Widget.Header style={{ padding: 0 }}>
+        <QuizStatus questions={db.questions} actualQuestion={questionIndex} results={results} />
       </Widget.Header>
 
       <img
@@ -196,13 +195,15 @@ export default function QuizPage() {
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.QUIZ && (
-          <QuestionWidget
-            question={question}
-            questionIndex={questionIndex}
-            totalQuestions={totalQuestions}
-            onSubmit={handleSubmitQuiz}
-            addResult={addResult}
-          />
+          <>
+            <QuestionWidget
+              question={question}
+              questionIndex={questionIndex}
+              onSubmit={handleSubmitQuiz}
+              addResult={addResult}
+              results={results}
+            />
+          </>
         )}
 
         {screenState === screenStates.LOADING && <LoadingWidget />}

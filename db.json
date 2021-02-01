@@ -135,11 +135,12 @@
             "secondary": "#0076f2",
             "mainBg": "#b5b5b5",
             "contrastText": "#1c1b19",
+            "white": "#ffffff",
             "gray": "#dbdbdb",
             "darkGray": "#999",
-            "wrong": "#FF0D23",
-            "success": "#19FF4F"
+            "wrong": "#ed1e1e",
+            "success": "#48aa36"
         },
-        "borderRadius": "4px"
+        "borderRadius": "2px"
     }
 }
