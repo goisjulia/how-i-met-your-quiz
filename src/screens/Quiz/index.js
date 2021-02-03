@@ -1,13 +1,67 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useRouter } from 'next/router';
-// import db from '../../../db.json';
+import { motion } from 'framer-motion';
 import Widget from '../../components/Widget';
 import QuizLogo from '../../components/QuizLogo';
 import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
 import Button from '../../components/Button';
 import Spinner from '../../components/Loading';
+import QuizStatus from '../../components/QuizStatusBar';
+import UnorderedList from '../../components/UnorderedList';
+
+function RulesWidget({ totalQuestions, onSubmit }) {
+  return (
+    <Widget>
+      <Widget.Header>
+        <h3>
+          Regras
+        </h3>
+      </Widget.Header>
+      <Widget.Content>
+        <UnorderedList>
+          <li>
+            O quiz é composto por
+            {' '}
+            {totalQuestions}
+            {' '}
+            questões;
+          </li>
+          <li> Cada questão vale 10 pontos;</li>
+          <li>
+            {' '}
+            O andamento pode ser acompanhado conforme abaixo:
+            <ul>
+              <li className="display-flex">
+                <div className="blue" />
+                - questão atual
+              </li>
+              <li className="display-flex">
+                <div className="green" />
+                - questão correta
+              </li>
+              <li className="display-flex">
+                <div className="red" />
+                - questão incorreta
+              </li>
+            </ul>
+          </li>
+        </UnorderedList>
+
+        <Button
+          type="button"
+          onClick={() => {
+            onSubmit();
+          }}
+        >
+          Challenge accepted!
+        </Button>
+
+      </Widget.Content>
+    </Widget>
+  );
+}
 
 function LoadingWidget() {
   return (
@@ -25,7 +79,7 @@ function LoadingWidget() {
   );
 }
 
-function ResultWidget({ results }) {
+function ResultWidget({ results, name }) {
   const router = useRouter();
 
   return (
@@ -37,7 +91,22 @@ function ResultWidget({ results }) {
       </Widget.Header>
       <Widget.Content>
         <h2>
-          Você acertou
+          {name !== '0' && (
+            <span>
+              {name}
+              {', '}
+              você
+            </span>
+          )}
+
+          {name === '0' && (
+            <span>
+              Você
+            </span>
+          )}
+
+          {' '}
+          acertou
           {' '}
           {results.filter((result) => result).length}
           {' '}
@@ -48,10 +117,9 @@ function ResultWidget({ results }) {
               <li>
                 {result === true ? 'Acertou' : 'Errou'}
               </li>
-
             ))}
           </ol>
-          {' '}
+
         </h2>
 
         <Button
@@ -71,11 +139,12 @@ function ResultWidget({ results }) {
 function QuestionWidget({
   question,
   questionIndex,
-  totalQuestions,
   onSubmit,
   addResult,
+  results,
+  questions,
 }) {
-//   const questionId = `question__${questionIndex}`;
+  // const questionId = `question__${questionIndex}`;
   const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
   const [isQuestionSubmitted, setQuestionSubmitted] = React.useState(false);
   const isCorrect = selectedAlternative === question.answer;
@@ -93,11 +162,18 @@ function QuestionWidget({
   }
 
   return (
-    <Widget>
-      <Widget.Header>
-        <h3>
-          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
-        </h3>
+    <Widget
+      as={motion.section}
+      transition={{ duration: 0.5 }}
+      variants={{
+        show: { opacity: 1 },
+        hidden: { opacity: 0 },
+      }}
+      initial="hidden"
+      animate="show"
+    >
+      <Widget.Header style={{ padding: 0 }}>
+        <QuizStatus questions={questions} actualQuestion={questionIndex} results={results} />
       </Widget.Header>
 
       <img
@@ -126,7 +202,10 @@ function QuestionWidget({
 
             return (
               <Widget.Topic
-                as="button"
+                as={motion.button}
+                whileTap={{
+                  scale: 0.95,
+                }}
                 id={alternativeId}
                 key={alternativeId}
                 onClick={() => setSelectedAlternative(alternativeIndex)}
@@ -147,22 +226,29 @@ function QuestionWidget({
 }
 
 const screenStates = {
+  RULES: 'RULES',
   QUIZ: 'QUIZ',
   LOADING: 'LOADING',
   RESULT: 'RESULT',
 };
 
-export default function QuizPage({ externalInfos }) {
+export default function QuizPage({ data, name, isExternal }) {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [results, setResults] = React.useState([]);
-  const totalQuestions = externalInfos.questions.length;
+  const totalQuestions = data.questions.length;
   const questionIndex = currentQuestion;
-  const question = externalInfos.questions[questionIndex];
+  const question = data.questions[questionIndex];
 
   function setLoadingToQuiz() {
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
+    }, 3000);
+  }
+
+  function setLoadingToRules() {
+    setTimeout(() => {
+      setScreenState(screenStates.RULES);
     }, 3000);
   }
 
@@ -174,14 +260,18 @@ export default function QuizPage({ externalInfos }) {
   }
 
   React.useEffect(() => {
-    setLoadingToQuiz();
+    setLoadingToRules();
   }, []);
+
+  function goToQuiz() {
+    setScreenState(screenStates.LOADING);
+    setLoadingToQuiz();
+  }
 
   function handleSubmitQuiz() {
     const nextQuestion = questionIndex + 1;
     if (nextQuestion < totalQuestions) {
-      setScreenState(screenStates.LOADING);
-      setLoadingToQuiz();
+      goToQuiz();
       setCurrentQuestion(nextQuestion);
     } else {
       setScreenState(screenStates.RESULT);
@@ -189,27 +279,36 @@ export default function QuizPage({ externalInfos }) {
   }
 
   return (
-    <QuizBackground backgroundImage={externalInfos.bg}>
+    <QuizBackground backgroundImage={data.bg}>
       <QuizContainer>
-        <QuizLogo />
+        <QuizLogo isExternal={isExternal} />
+
+        {screenState === screenStates.RULES && (
+          <RulesWidget
+            onSubmit={goToQuiz}
+            totalQuestions={totalQuestions}
+          />
+        )}
+
         {screenState === screenStates.QUIZ && (
           <QuestionWidget
             question={question}
             questionIndex={questionIndex}
-            totalQuestions={totalQuestions}
             onSubmit={handleSubmitQuiz}
             addResult={addResult}
+            results={results}
+            questions={data.questions}
           />
         )}
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
-        {screenState === screenStates.RESULT
-          && (
-            <ResultWidget
-              results={results}
-            />
-          )}
+        {screenState === screenStates.RESULT && (
+          <ResultWidget
+            name={name}
+            results={results}
+          />
+        )}
       </QuizContainer>
     </QuizBackground>
   );

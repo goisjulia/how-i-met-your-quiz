@@ -94,25 +94,25 @@ Widget.Topic = styled.a`
       font-weight: 700;
 
       &[data-correct="true"]{
-        background-color: ${({ theme }) => `${theme.colors.success}`};
+        /* background-color: ${({ theme }) => `${theme.colors.success}`}; */
         /* color:  ${({ theme }) => `${theme.colors.contrastText}`}; */
-        animation: changeColorSucess 0.7s linear;
+        animation: changeColorSucess 2s linear;
       }
 
       &[data-correct="false"]{
-        background-color: ${({ theme }) => `${theme.colors.wrong}`};
-        animation: changeColorError 0.7s linear;
+        /* background-color: ${({ theme }) => `${theme.colors.wrong}`}; */
+        animation: changeColorError 2s linear;
       }
     }
   }
 
   @keyframes changeColorSucess {
-    from { background-color: ${({ theme }) => `${theme.colors.primary}70`}; }
+    from { background-color: ${({ theme }) => `${theme.colors.primary}90`}; }
     to { background-color: ${({ theme }) => `${theme.colors.success}`}; }
   }
 
   @keyframes changeColorError {
-    from { background-color: ${({ theme }) => `${theme.colors.primary}70`}; }
+    from { background-color: ${({ theme }) => `${theme.colors.primary}90`}; }
     to { background-color: ${({ theme }) => `${theme.colors.wrong}`}; }
   }
 `;

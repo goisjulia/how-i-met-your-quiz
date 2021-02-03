@@ -9,9 +9,11 @@ const LinkBase = styled(LinkContainer)`
   border: 1px solid;
 `;
 
-export default function Link({ children, href, ...props }) {
+export default function Link({
+  children, href, disabled, ...props
+}) {
   return (
-    <LinkBase href={href} passHref>
+    <LinkBase href={href} onClick={(e) => e.preventDefault()} passHref>
       <a {...props}>
         {children}
       </a>

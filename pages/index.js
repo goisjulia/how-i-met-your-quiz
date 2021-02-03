@@ -20,14 +20,7 @@ export default function Home() {
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
         <QuizLogo
-          as={motion.div}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          variants={{
-            show: { opacity: 1, y: '0' },
-            hidden: { opacity: 0, y: '100%' },
-          }}
-          initial="hidden"
-          animate="show"
+          isExternal={false}
         />
 
         <Widget
@@ -46,7 +39,7 @@ export default function Home() {
           <Widget.Content>
             <form onSubmit={function submit(infosDoEvento) {
               infosDoEvento.preventDefault();
-              router.push(`/quiz?name=${name}`);
+              router.push(`quiz/how-i-met-your-quiz/goisjulia/${name}`);
             }}
             >
               <Input
@@ -83,11 +76,13 @@ export default function Home() {
                   .replace('.vercel.app', '')
                   .split('.');
 
+                const validateName = { name }.name.length === 0 ? '0' : { name }.name;
+
                 return (
                   <li key={linkExterno}>
                     <Widget.Topic
                       as={Link}
-                      href={`quiz/${projectName}___${gitHubUser}`}
+                      href={`quiz/${projectName}/${gitHubUser}/${validateName}`}
                     >
                       {'📝 '}
                       {projectName}
