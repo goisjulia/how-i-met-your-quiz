@@ -32,7 +32,7 @@ QuizStatusContainer.Question = styled.div`
   padding: 6px;
   width: 1.9rem;
   text-align: center;
-  color: ${({ theme }) => `${theme.colors.white}`};
+  color: ${({ theme }) => `${theme.colors.contrastText}`};
   background-color: ${({ theme }) => `${theme.colors.secondary}90`};
   border-radius: ${({ theme }) => `${theme.borderRadius}`};
   box-shadow: 1px 1px 0 rgb(0 0 0 / 20%), inset 0 -1px 1px 0 rgb(0 0 0 / 30%);

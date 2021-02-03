@@ -21,17 +21,17 @@ html, body {
 
 body::-webkit-scrollbar-track{
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.colors.contrastText};
+  background-color: ${({ theme }) => theme.colors.mainBg};
 }
 
 body::-webkit-scrollbar{
   width: 10px;
-  background-color: ${({ theme }) => theme.colors.contrastText};
+  background-color: ${({ theme }) => theme.colors.mainBg};
 }
 
 body::-webkit-scrollbar-thumb{
   border-radius: 5px;
-  background-color: ${({ theme }) => `${theme.colors.primary}aa`};
+  background-color: ${({ theme }) => `${theme.colors.primary}`};
 }
 
 #__next {

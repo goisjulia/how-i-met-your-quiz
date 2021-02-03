@@ -9,7 +9,7 @@ const Button = styled.button`
   margin: 20px 0;
   border-radius: 2px;
   background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.contrastText};
+  color: ${({ theme }) => theme.colors.mainBg};
   font-size: 12pt;
   font-weight: 700;
   cursor: pointer;
@@ -24,14 +24,8 @@ const Button = styled.button`
     outline: none;
   }
 
-  &:hover &:not(:disabled) {
-    box-shadow: none;
-    border: 2px solid;
-  }
-
-  &:hover &:disabled{
-    background-color: ${({ theme }) => `${theme.colors.primary}70`};
-    color: ${({ theme }) => `${theme.colors.contrastText}70`};
+  &:hover :not(:disabled) {
+    transform: scale(1.02);
   }
 `;
 

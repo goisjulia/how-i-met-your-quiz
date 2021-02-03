@@ -10,8 +10,9 @@ import Button from '../../components/Button';
 import Spinner from '../../components/Loading';
 import QuizStatus from '../../components/QuizStatusBar';
 import UnorderedList from '../../components/UnorderedList';
+import GitHubCorner from '../../components/GitHubCorner';
 
-function RulesWidget({ totalQuestions, onSubmit }) {
+function RulesWidget({ isExternal, totalQuestions, onSubmit }) {
   return (
     <Widget>
       <Widget.Header>
@@ -21,6 +22,15 @@ function RulesWidget({ totalQuestions, onSubmit }) {
       </Widget.Header>
       <Widget.Content>
         <UnorderedList>
+          {!isExternal && (
+            <li>
+              ⚠️
+              {' '}
+              <b>ALERTA: Contém spoilers! </b>
+              {' '}
+              ⚠️
+            </li>
+          )}
           <li>
             O quiz é composto por
             {' '}
@@ -65,7 +75,16 @@ function RulesWidget({ totalQuestions, onSubmit }) {
 
 function LoadingWidget() {
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ duration: 0.5 }}
+      variants={{
+        show: { opacity: 1 },
+        hidden: { opacity: 0 },
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
         <h2>
           Espere um pouquinho...
@@ -285,8 +304,9 @@ export default function QuizPage({ data, name, isExternal }) {
 
         {screenState === screenStates.RULES && (
           <RulesWidget
-            onSubmit={goToQuiz}
+            isExternal={isExternal}
             totalQuestions={totalQuestions}
+            onSubmit={goToQuiz}
           />
         )}
 
@@ -310,6 +330,7 @@ export default function QuizPage({ data, name, isExternal }) {
           />
         )}
       </QuizContainer>
+      <GitHubCorner projectUrl="https://github.com/goisjulia" />
     </QuizBackground>
   );
 }

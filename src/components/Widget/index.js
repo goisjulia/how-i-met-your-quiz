@@ -4,19 +4,25 @@ const Widget = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
   border: 1px solid ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => `${theme.colors.mainBg}`};
+  backdrop-filter: blur(30px);
   border-radius: 4px;
   overflow: hidden;
+
   h1, h2, h3 {
     font-size: 16px;
     font-weight: 700;
     line-height: 1;
     margin-bottom: 0;
   }
+
+  h2 {
+    font-size: 13pt;
+  }
+
   p {
-    font-size: 14px;
+    font-size: 12pt;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.25;
   }
 `;
 
@@ -26,6 +32,7 @@ Widget.Header = styled.header`
   align-items: center;
   padding: 18px 32px;
   background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.mainBg};
   text-transform: uppercase;
 
   h1 {
@@ -61,8 +68,8 @@ Widget.Content = styled.div`
 Widget.Topic = styled.a`
   outline: 0;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.contrastText};
-  background-color: ${({ theme }) => `${theme.colors.primary}90`};
+  color: ${({ theme }) => theme.colors.mainBg};
+  background-color: ${({ theme }) => `${theme.colors.primary}ee`};
   padding: 10px 15px;
   margin-bottom: 8px;
   cursor: pointer;
@@ -79,41 +86,41 @@ Widget.Topic = styled.a`
 
   &:not([data-submitted]):hover ,
   &[data-submitted="false"]:hover {
-    background-color: ${({ theme }) => `${theme.colors.primary}bb`};
+    background-color: ${({ theme }) => `${theme.colors.primary}dd`};
     transform: scale(1.01);
     font-weight: 700;
   }
 
   &[data-submitted="true"] {
-    background-color: ${({ theme }) => `${theme.colors.primary}50`};
+    background-color: ${({ theme }) => `${theme.colors.primary}bb`};
     cursor: not-allowed;
 
     &[data-selected="true"]{
-      color:  ${({ theme }) => `${theme.colors.white}`};
       cursor: auto;
       font-weight: 700;
 
       &[data-correct="true"]{
-        /* background-color: ${({ theme }) => `${theme.colors.success}`}; */
-        /* color:  ${({ theme }) => `${theme.colors.contrastText}`}; */
-        animation: changeColorSucess 2s linear;
+        animation: changeColorSuccess 1s linear forwards;
       }
 
       &[data-correct="false"]{
-        /* background-color: ${({ theme }) => `${theme.colors.wrong}`}; */
-        animation: changeColorError 2s linear;
+        animation: changeColorError 1s linear forwards;
       }
     }
   }
 
-  @keyframes changeColorSucess {
-    from { background-color: ${({ theme }) => `${theme.colors.primary}90`}; }
-    to { background-color: ${({ theme }) => `${theme.colors.success}`}; }
+  @keyframes changeColorSuccess {
+    to { 
+      background-color: ${({ theme }) => `${theme.colors.success}`}; 
+      color:  ${({ theme }) => `${theme.colors.contrastText}`};
+    }
   }
 
   @keyframes changeColorError {
-    from { background-color: ${({ theme }) => `${theme.colors.primary}90`}; }
-    to { background-color: ${({ theme }) => `${theme.colors.wrong}`}; }
+    to { 
+      background-color: ${({ theme }) => `${theme.colors.wrong}`}; 
+      color:  ${({ theme }) => `${theme.colors.contrastText}`};
+    }
   }
 `;
 
