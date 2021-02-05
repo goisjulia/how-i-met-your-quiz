@@ -1,6 +1,6 @@
 <h1 align="center">✨how i met your quiz✨ </h1>
 
-### 🎨 Sobre
+### ℹ️ Sobre
 
 Quiz que tem como tema a série How I met your mother e que foi criado durante a segunda Imersão React da Alura - NextJs (2021)
 
