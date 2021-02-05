@@ -173,8 +173,8 @@ function ResultWidget({ results, name }) {
               </thead>
               <tbody>
                 <tr>
-                  {results.map((result) => (
-                    <th>
+                  {results.map((result, resultIndex) => (
+                    <th key={`result_${resultIndex}`}>
                       {result === true ? <CheckIcon /> : <CloseOutlineIcon />}
                     </th>
                   ))}
