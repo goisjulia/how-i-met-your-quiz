@@ -11,7 +11,6 @@ import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 import QuizContainer from '../src/components/QuizContainer';
 import Link from '../src/components/Link';
-import Spinner from '../src/components/Loading';
 import Loader from '../src/components/Loader';
 
 const screenStates = {
@@ -40,7 +39,16 @@ export default function Home() {
         <Loader />
       )}
       {screenState === screenStates.HOME && (
-        <QuizContainer>
+        <QuizContainer
+          as={motion.main}
+          transition={{ duration: 0.5 }}
+          variants={{
+            show: { opacity: 1, y: '0' },
+            hidden: { opacity: 0, y: '100%' },
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <QuizLogo
             isExternal={false}
           />
@@ -49,8 +57,8 @@ export default function Home() {
             as={motion.section}
             transition={{ delay: 0.5, duration: 0.5 }}
             variants={{
-              show: { opacity: 1, y: '0' },
-              hidden: { opacity: 0, y: '100%' },
+              show: { opacity: 1, x: '0' },
+              hidden: { opacity: 0, x: '100%' },
             }}
             initial="hidden"
             animate="show"
@@ -80,10 +88,10 @@ export default function Home() {
 
           <Widget
             as={motion.section}
-            transition={{ delay: 1, duration: 0.5 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
             variants={{
-              show: { opacity: 1, y: '0' },
-              hidden: { opacity: 0, y: '100%' },
+              show: { opacity: 1, x: '0' },
+              hidden: { opacity: 0, x: '100%' },
             }}
             initial="hidden"
             animate="show"
@@ -124,10 +132,10 @@ export default function Home() {
 
           <Footer
             as={motion.footer}
-            transition={{ delay: 1.5, duration: 0.5 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
             variants={{
-              show: { opacity: 1, y: '0' },
-              hidden: { opacity: 0, y: '100%' },
+              show: { opacity: 1, x: '0' },
+              hidden: { opacity: 0, x: '100%' },
             }}
             initial="hidden"
             animate="show"

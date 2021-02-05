@@ -2,7 +2,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-// import Widget from '../Widget';
+import { Home } from '@styled-icons/boxicons-solid';
+import Link from '../Link';
 
 const QuizStatusContainer = styled.div`
   display: flex;
@@ -12,25 +13,12 @@ const QuizStatusContainer = styled.div`
   padding: 10px 5px;
   width: 100%;
   margin-left: 7px;
-  /* margin-top: 40px; */
-  /* border-radius: ${({ theme }) => `${theme.borderRadius}`}; */
+  align-items: center;
 `;
-
-// QuizStatusContainer.Header = styled.header`
-//   background-color: ${({ theme }) => `${theme.colors.primary}`};
-//   color: ${({ theme }) => `${theme.colors.contratText}`};
-// `;
-
-// QuizStatusContainer.Content = styled.main`
-
-//   background-color: ${({ theme }) => `${theme.colors.primary}`};
-//   color: ${({ theme }) => `${theme.colors.contrastText}`};
-//   background-color: ${({ theme }) => `${theme.colors.mainBg}`};
-// `;
 
 QuizStatusContainer.Question = styled.div`
   padding: 6px;
-  width: 1.9rem;
+  width: 2rem;
   text-align: center;
   color: ${({ theme }) => `${theme.colors.contrastText}`};
   background-color: ${({ theme }) => `${theme.colors.secondary}90`};
@@ -40,7 +28,6 @@ QuizStatusContainer.Question = styled.div`
 
   &[data-actual="true"]{
     background-color: ${({ theme }) => `${theme.colors.secondary}`};
-    /* border: 2px solid ${({ theme }) => `${theme.colors.contrastText}`}; */
   }
 
   &[data-correct="true"]{
@@ -52,9 +39,29 @@ QuizStatusContainer.Question = styled.div`
   }
 `;
 
+const HomeDefault = styled(Home)`
+  color: ${({ theme }) => `${theme.colors.contrastText}`};;
+  height: 25px;
+  width: 25px;
+
+  &:hover {
+    color: ${({ theme }) => `${theme.colors.contrastText}aa`};
+  }
+`;
+const IconContainer = styled.div`
+  display: inline;
+  margin-right: 10px;
+`;
+
 export default function QuizStatus({ questions, actualQuestion, results }) {
   return (
-    <QuizStatusContainer>
+    <QuizStatusContainer
+      as={Link}
+      href="/"
+    >
+      <IconContainer>
+        <HomeDefault />
+      </IconContainer>
       {questions.map((question, index) => (
         <QuizStatusContainer.Question
           data-actual={actualQuestion === index}
