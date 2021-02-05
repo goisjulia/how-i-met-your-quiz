@@ -1,7 +1,11 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { Check } from '@styled-icons/boxicons-regular';
+import { CloseOutline } from '@styled-icons/evaicons-outline';
 import Widget from '../../components/Widget';
 import QuizLogo from '../../components/QuizLogo';
 import QuizBackground from '../../components/QuizBackground';
@@ -12,6 +16,7 @@ import QuizStatus from '../../components/QuizStatusBar';
 import UnorderedList from '../../components/UnorderedList';
 import GitHubCorner from '../../components/GitHubCorner';
 import ButtonHome from '../../components/Button/ButtonHome';
+import DivOverflowX from '../../components/DivOverflowX';
 
 function RulesWidget({ isExternal, totalQuestions, onSubmit }) {
   return (
@@ -104,12 +109,32 @@ function LoadingWidget() {
 
 function ResultWidget({ results, name }) {
   const router = useRouter();
+  const punctuation = results.filter((result) => result).length * 10;
+
+  const Score = styled.div`
+    color: ${({ theme }) => theme.colors.primary};
+    font-size: 28pt;
+    text-align:center;
+    margin: 30px 0;
+  `;
+
+  const CheckIcon = styled(Check)`
+    height: 30px;
+    width: 30px;
+    color: ${({ theme }) => theme.colors.success};
+  `;
+
+  const CloseOutlineIcon = styled(CloseOutline)`
+    height: 30px;
+    width: 30px;
+    color: ${({ theme }) => theme.colors.wrong};
+  `;
 
   return (
     <Widget>
       <Widget.Header>
         <h3>
-          Vamos ao resultado!
+          Resultado
         </h3>
       </Widget.Header>
       <Widget.Content>
@@ -118,30 +143,45 @@ function ResultWidget({ results, name }) {
             <span>
               {name}
               {', '}
-              você
+              sua pontuação foi:
             </span>
           )}
 
           {name === '0' && (
             <span>
-              Você
+              Sua pontuação foi:
             </span>
           )}
 
           {' '}
-          acertou
-          {' '}
-          {results.filter((result) => result).length}
-          {' '}
-          questões, parabéns!
+          <Score>
+            {punctuation}
+            {' '}
+            pontos!
+          </Score>
 
-          <ol>
-            {results.map((result) => (
-              <li>
-                {result === true ? 'Acertou' : 'Errou'}
-              </li>
-            ))}
-          </ol>
+          <DivOverflowX>
+            <table>
+              <thead>
+                <tr>
+                  {results.map((result, resultIndex) => (
+                    <th key={`result_${resultIndex}`}>
+                      {resultIndex + 1}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  {results.map((result) => (
+                    <th>
+                      {result === true ? <CheckIcon /> : <CloseOutlineIcon />}
+                    </th>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </DivOverflowX>
 
         </h2>
 
