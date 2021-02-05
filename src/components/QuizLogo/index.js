@@ -2,24 +2,28 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Link from '../Link';
 
 function Logo({ isExternal }) {
-  const router = useRouter();
-
   return (
-    <LogoContainer onClick={(e) => {
-      e.preventDefault();
-      router.push('/');
-    }}
-    >
+    <>
       {!isExternal && (
-        <img src="https://fontmeme.com/permalink/210127/0b75dba7d920d93144d1a258d3e64bfb.png" alt="Logo" border="0" />
+        <LogoContainer
+          as={Link}
+          href="/"
+        >
+          <img
+            src="https://fontmeme.com/permalink/210127/0b75dba7d920d93144d1a258d3e64bfb.png"
+            alt="Logo"
+            border="0"
+          />
+        </LogoContainer>
       )}
 
       {isExternal && (
         <ExternalLogoContainer />
       )}
-    </LogoContainer>
+    </>
   );
 }
 
@@ -71,6 +75,7 @@ function ExternalLogo({ className }) {
 const ExternalLogoContainer = styled(ExternalLogo)`
   margin: auto;
   display: block;
+  cursor: default;
 
   @media screen and (max-width: 500px) {
     margin: 0;

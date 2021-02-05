@@ -2,8 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import { Home } from '@styled-icons/boxicons-solid';
-import Link from '../Link';
+import ButtonHome from '../Button/ButtonHome';
 
 const QuizStatusContainer = styled.div`
   display: flex;
@@ -39,29 +38,15 @@ QuizStatusContainer.Question = styled.div`
   }
 `;
 
-const HomeDefault = styled(Home)`
-  color: ${({ theme }) => `${theme.colors.contrastText}`};;
-  height: 25px;
-  width: 25px;
-
-  &:hover {
-    color: ${({ theme }) => `${theme.colors.contrastText}aa`};
-  }
-`;
-const IconContainer = styled.div`
-  display: inline;
-  margin-right: 10px;
-`;
-
-export default function QuizStatus({ questions, actualQuestion, results }) {
+export default function QuizStatus({
+  questions, actualQuestion, results, isExternal,
+}) {
   return (
-    <QuizStatusContainer
-      as={Link}
-      href="/"
-    >
-      <IconContainer>
-        <HomeDefault />
-      </IconContainer>
+    <QuizStatusContainer>
+      {isExternal && (
+        <ButtonHome />
+      )}
+
       {questions.map((question, index) => (
         <QuizStatusContainer.Question
           data-actual={actualQuestion === index}

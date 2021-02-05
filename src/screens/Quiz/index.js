@@ -11,11 +11,15 @@ import Spinner from '../../components/Loading';
 import QuizStatus from '../../components/QuizStatusBar';
 import UnorderedList from '../../components/UnorderedList';
 import GitHubCorner from '../../components/GitHubCorner';
+import ButtonHome from '../../components/Button/ButtonHome';
 
 function RulesWidget({ isExternal, totalQuestions, onSubmit }) {
   return (
     <Widget>
       <Widget.Header>
+        {isExternal && (
+          <ButtonHome />
+        )}
         <h3>
           Regras
         </h3>
@@ -147,7 +151,7 @@ function ResultWidget({ results, name }) {
             router.push('/');
           }}
         >
-          Recomeçar
+          Voltar ao início
         </Button>
 
       </Widget.Content>
@@ -162,6 +166,7 @@ function QuestionWidget({
   addResult,
   results,
   questions,
+  isExternal,
 }) {
   // const questionId = `question__${questionIndex}`;
   const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
@@ -192,7 +197,12 @@ function QuestionWidget({
       animate="show"
     >
       <Widget.Header style={{ padding: 0 }}>
-        <QuizStatus questions={questions} actualQuestion={questionIndex} results={results} />
+        <QuizStatus
+          questions={questions}
+          actualQuestion={questionIndex}
+          results={results}
+          isExternal={isExternal}
+        />
       </Widget.Header>
 
       <img
@@ -318,6 +328,7 @@ export default function QuizPage({ data, name, isExternal }) {
             addResult={addResult}
             results={results}
             questions={data.questions}
+            isExternal={isExternal}
           />
         )}
 
